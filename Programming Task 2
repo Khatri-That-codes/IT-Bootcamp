@@ -1,0 +1,73 @@
+"""
+This code uses the randint function from the random module to create a game where the user has to guess 
+the "secret value". 
+
+Author : Jena Khatri
+Date : 14/11/2004
+"""
+
+#importing the random module
+import random
+
+#setting up the secret value 
+secretValue = random.randint(1,100)
+
+# this boolean will be used as the condition of the main game while loop
+isCorrectGuess = False
+
+
+def validate_Input(userInput):
+    """
+    This function will determine if the input is an integer or it can be casted as an integer (not float)
+
+    Parameters:
+        userInput - is the value that needs to be checked
+
+    Returns:
+        True if the input can be represented as an integer type
+        False if the input cannot be represented as an integer type
+    """
+    if isinstance(userInput,str) and userInput.isnumeric() == True:  #this checks if only integers are entered as a string (not a float)
+        return True
+    
+    elif isinstance(userInput,int) == True:  #this checks if the input is an integer (for code reusability)
+        return True
+
+    else:
+        return False
+
+def print_User_Guess_Statement(userInput, secretValue):
+    """
+    This function will print statements depending on the value of the user compared to the secret value
+    It will indicate if it is the correct/higher/lower value
+
+    Parameters:
+        userInput - the value that needs to be compared
+        secretValue - this value determines if the user value is correct/higher/lower
+
+    Returns:
+        None
+    """
+    userGuess = int(userInput)
+    if userGuess == secretValue:
+        print("Congratulations, Your guess is Correct!")
+    
+    elif userGuess > secretValue:
+        print("Oh no, your guess is HIGHER than the secret Value, Try Again!")
+
+    elif userGuess < secretValue:
+        print("oh no, your guess is LOWER than the secret value, Try Again!")
+
+
+#This while loop will run the game until the user enters the correct value 
+while isCorrectGuess == False:
+    userInput = input("Enter Your Guess:\n")
+
+    if validate_Input(userInput) == False:
+        print("Your input is invalid, please try again")
+        continue
+
+    print_User_Guess_Statement(userInput,secretValue)
+
+    if int(userInput) == secretValue:  #this checks if the loop needs to be run again
+        isCorrectGuess = True
