@@ -1,0 +1,27 @@
+"""
+This file contains the solution for Programming Task 1
+It employs a method of using an abacus-like approach where the position of 
+the number in the list represents whether its a thousands, hundreds, tens and so forth.
+This value can be mulitplied according to that position and added to the output integer.
+
+Author : Jena Khatri
+Date : 14/11/2024
+
+"""
+
+#setting up variables
+numberList = [8,3,5,1]
+outputInteger = 0
+
+listLength = len(numberList)
+powerValue = listLength -1
+
+
+#This for loop will iterate over the numbers in the list and also reduce the valur of the power value
+#after each iteration.
+for number in numberList:
+    currentNumber = number*(10**(powerValue))  #the current number is mulitplied by ten to the power that represents its position in the list
+    outputInteger += currentNumber   #the value then gets added to the final integer
+    powerValue -=1
+
+print(outputInteger)   #printing the output integer to the console
