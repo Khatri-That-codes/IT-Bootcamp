@@ -17,7 +17,7 @@ listLength = len(numberList)
 powerValue = listLength -1
 
 
-#This for loop will iterate over the numbers in the list and also reduce the valur of the power value
+#This for loop will iterate over the numbers in the list and also reduce the value of the power value
 #after each iteration.
 for number in numberList:
     currentNumber = number*(10**(powerValue))  #the current number is mulitplied by ten to the power that represents its position in the list
